@@ -1,0 +1,36 @@
+{% extends 'expediente/base.html' %}
+
+  
+{% block content %}
+<div class="jumbotron">
+    <h1>Gestion de expedientes</h1>
+    <p class="lead">Bienvenido! El sistema de gestion de expedientes permite cargar nuevos expedientes, modificarlos y generar reportes segun fechas de vencimientos y plazos establecidos</p>
+    <a class="btn btn-lg btn-primary" href="{% url 'post_new' %}" role="button">Crear Nuevo &raquo;</a>
+  </div>
+  
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Fecha creacion</th>
+        <th>Caratula</th>
+        <th>creado por</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for post in posts %}
+    <tr>
+    <td>
+        {{ post.fecha_creacion }}
+    </td>
+    <td>
+    <a href="{% url 'post_detail' pk=post.pk %}">{{ post.caratula }}</a>
+    </td>
+    <td>
+    {{ post.creado_por|linebreaksbr }}
+    </td>
+        
+    </tr>
+{% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

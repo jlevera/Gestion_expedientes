@@ -1,0 +1,13 @@
+{% extends 'expediente/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if post.fecha_creacion %}
+            <div class="date">
+                {{ post.fecha_creacion }}
+            </div>
+        {% endif %}
+        <h2>{{ post.caratula }}</h2>
+        <p>{{ post.creado_por|linebreaksbr }}</p>
+    </div>
+{% endblock %}
